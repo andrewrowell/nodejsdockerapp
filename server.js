@@ -1,13 +1,14 @@
 'use strict';
 
+// This app uses express and pug.
 const express = require('express');
 const pug = require('pug');
 
-// Constants
+// Config
 const PORT = 80;
 const HOST = '0.0.0.0';
 
-// App
+// Host homepage.pug
 const app = express();
 app.get('/', (req, res) => {
   res.send(pug.renderFile('homepage.pug'));
