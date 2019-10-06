@@ -2,7 +2,7 @@
 FROM node:10
 
 # Create app directory
-WORKDIR /usr/src/app
+WORKDIR /etc/testapp
 
 # Install app dependencies files.
 COPY package*.json ./
