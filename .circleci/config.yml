@@ -11,6 +11,7 @@ workflows:
           region: ${AWS_DEFAULT_REGION}
           tag: "${CIRCLE_SHA1}"
       - aws-ecs/deploy-service-update:
+          name: test-deploy
           requires:
             - aws-ecr/build_and_push_image
           aws-region: ${AWS_DEFAULT_REGION}
@@ -21,8 +22,9 @@ workflows:
       - hold:
           type: approval
           requires:
-            - aws-ecs/deploy-service-update
+            - test-deploy
       - aws-ecs/deploy-service-update:
+          name: main-deploy
           requires:
             - hold
           aws-region: ${AWS_DEFAULT_REGION}
