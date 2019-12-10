@@ -18,3 +18,15 @@ workflows:
           service-name: "nodeapp-test"
           cluster-name: "default"
           container-image-name-updates: "container=test-container,tag=${CIRCLE_SHA1}"
+      - hold
+          type: approval
+          requires:
+            - aws-ecs/deploy-service-update
+      - aws-ecs/deploy-service-update:
+          requires:
+            - hold
+          aws-region: ${AWS_DEFAULT_REGION}
+          family: "first-run-task-definition"
+          service-name: "nodeapp-main"
+          cluster-name: "default"
+          container-image-name-updates: "container=test-container,tag=${CIRCLE_SHA1}"
