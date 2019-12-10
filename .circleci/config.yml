@@ -18,7 +18,7 @@ workflows:
           service-name: "nodeapp-test"
           cluster-name: "default"
           container-image-name-updates: "container=test-container,tag=${CIRCLE_SHA1}"
-      - hold
+      - hold:
           type: approval
           requires:
             - aws-ecs/deploy-service-update
