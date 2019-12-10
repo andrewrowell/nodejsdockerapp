@@ -15,6 +15,6 @@ workflows:
             - aws-ecr/build_and_push_image
           aws-region: ${AWS_DEFAULT_REGION}
           family: "first-run-task-definition"
-          service-name: "nodeapp-test
+          service-name: "nodeapp-test"
           cluster-name: "default"
           container-image-name-updates: "container=${AWS_RESOURCE_NAME_PREFIX}-service,tag=${CIRCLE_SHA1}"
